@@ -1,0 +1,13 @@
+[user]
+	name = Frenki
+	email = frenki@email.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/home/frenki/.local/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/home/frenki/.local/bin/gh auth git-credential
