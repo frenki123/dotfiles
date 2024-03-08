@@ -54,14 +54,13 @@ focus_follows_mouse no
 # Read `man 5 sway-input` for more information about this section.
 
 # Startup
-exec nm-applet
+# exec nm-applet
 exec gammastep
 
 default_border none
 bindsym $mod+Shift+b border normal
 for_window [title="qBit*"] floating enable
 for_window [title="qBit*"] border normal
-for_window [title="NetworkManagerTui*"] floating enable
 for_window [title="qBit*"] border normal
 ### Key bindings
 #
