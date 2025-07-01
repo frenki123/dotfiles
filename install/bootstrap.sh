@@ -16,7 +16,7 @@ initial_setup() {
     pacman -Syu
     echo "Installing sudo git base-devel"
     pacman -Sy --noconfirm sudo git base-devel
-    echo "Creating user '$username'..."
+    echo "Creating user '$USERNAME'..."
     useradd -m -G wheel -s /bin/bash "$USERNAME"
     passwd "$USERNAME"
     echo "Enabling sudo for wheel group..."
