@@ -1,5 +1,5 @@
-#!/bin/bash
-# fail the script on any error
+#!/bin/bash -i
+# fail the script on any error and run script interactively
 set -euo pipefail
 
 prompt() {
@@ -13,7 +13,7 @@ prompt() {
 
 initial_setup() {
     echo "Updating pacman with 'pacman -Syu'"
-    pacman -Syu
+    pacman -Syu --noconfirm
     echo "Installing sudo git base-devel"
     pacman -Sy --noconfirm sudo git base-devel
     echo "Creating user '$USERNAME'..."
@@ -23,7 +23,11 @@ initial_setup() {
     sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }
 
+change_user() {
+    su $USERNAME
+    echo "Changing user"
+    cd $HOME
+}
+
 USERNAME=$(prompt "Enter username" "user")
 initial_setup
-
-
