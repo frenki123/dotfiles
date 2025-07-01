@@ -23,11 +23,22 @@ initial_setup() {
     sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }
 
-change_user() {
-    su $USERNAME
+install_paru() {
+    git clone https://aur.archlinux.org/paru.git
+    cd paru
+    makepkg -si
+}
+
+user_setup() {
+    sudo -i -u "$USERNAME" bash << 'EOF'
     echo "Changing user"
     cd $HOME
+    install_paru
+    paru -Sy neovim wget
+    exec bash
+    EOF
 }
 
 USERNAME=$(prompt "Enter username" "user")
 initial_setup
+user_setup
