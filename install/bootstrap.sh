@@ -16,6 +16,8 @@ initial_setup() {
     pacman -Syu --noconfirm
     echo "Installing sudo git base-devel"
     pacman -Sy --noconfirm sudo git base-devel
+    echo "Setup password for 'root'"
+    passwd
     echo "Creating user '$USERNAME'..."
     useradd -m -G wheel -s /bin/bash "$USERNAME"
     passwd "$USERNAME"
